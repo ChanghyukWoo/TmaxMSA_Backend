@@ -28,7 +28,6 @@ public class TransactionService {
      */
 /*
     public List<TxListResponseDto> findAllTx(){
-
     }
 */
 

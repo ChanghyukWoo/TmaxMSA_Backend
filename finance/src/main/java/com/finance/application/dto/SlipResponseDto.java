@@ -6,7 +6,6 @@ import com.finance.domain.enums.DCType;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Data
 @NoArgsConstructor
 public class SlipResponseDto {
@@ -34,9 +33,5 @@ public class SlipResponseDto {
                 slip.getAmount(),
                 slip.getSlipBriefs()
         );
-
-
     }
 }
-
-
