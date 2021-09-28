@@ -1,6 +1,7 @@
 package com.finance.application;
 
 import com.finance.application.dto.SlipCreateRequestDto;
+import com.finance.application.dto.SlipCreateResponseDto;
 import com.finance.application.dto.SlipResponseDto;
 import com.finance.application.dto.TxResponseDto;
 import com.finance.application.spi.SlipPort;
@@ -22,9 +23,10 @@ public class SlipService {
 
 
     @Transactional
-    public SlipResponseDto create(SlipCreateRequestDto SlipCreateRequestDto) {
+    public SlipCreateResponseDto create(SlipCreateRequestDto SlipCreateRequestDto) {
 
-        TxResponseDto TxResponseDto = transactionsPort.findById(SlipCreateRequestDto.getTransaction_id());
+        Optional<TxResponseDto> TxResponseDto = this.transactionsPort.findById(SlipCreateRequestDto.getTx_id());
+
 
         return slipPort.create(SlipCreateRequestDto, TxResponseDto);
     }

@@ -1,5 +1,6 @@
 package com.finance.adapter.persistence;
 
+import com.finance.application.dto.TxResponseDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
@@ -47,6 +48,14 @@ public class Transactions {
     /*
      * Constructor
      */
+
+    private Transactions(String id, String txBriefs, LocalDateTime txDate, int txAmount){
+        this.id = id; //수정 필요함
+        this.txBriefs = txBriefs;
+        this.txDate = txDate;
+        this.txAmount = txAmount;
+    }
+
     private Transactions(String txBriefs, LocalDateTime txDate, int txAmount){
         this.txBriefs = txBriefs;
         this.txDate = txDate;
@@ -56,5 +65,14 @@ public class Transactions {
     public static Transactions of(String txBriefs, LocalDateTime txDate, int txAmount)
     {
         return new Transactions(txBriefs, txDate, txAmount);
+    }
+
+    public static Transactions from(TxResponseDto txResponseDto) {
+        return new Transactions(
+                txResponseDto.getTxId(),
+                txResponseDto.getTxBriefs(),
+                txResponseDto.getTxDate(),
+                txResponseDto.getTxAmount()
+        );
     }
 }
