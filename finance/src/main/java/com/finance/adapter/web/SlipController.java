@@ -2,6 +2,7 @@ package com.finance.adapter.web;
 
 import com.finance.application.SlipService;
 import com.finance.application.dto.SlipCreateRequestDto;
+import com.finance.application.dto.SlipCreateResponseDto;
 import com.finance.application.dto.SlipResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +20,7 @@ public class SlipController {
     private final SlipService slipService;
 
     @PostMapping("/api/v0/slips")
-    public SlipResponseDto create(@RequestBody SlipCreateRequestDto slipCreateRequestDto){
+    public SlipCreateResponseDto create(@RequestBody SlipCreateRequestDto slipCreateRequestDto){
         return slipService.create(slipCreateRequestDto);
     }
 }

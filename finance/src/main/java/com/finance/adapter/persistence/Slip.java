@@ -35,7 +35,7 @@ public class Slip {
     private String slipBriefs;
 
     @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "tx_id")
     private Transactions transactions;
 
 
