@@ -3,15 +3,10 @@ package com.finance.adapter.web;
 import com.finance.application.SlipService;
 import com.finance.application.dto.SlipCreateRequestDto;
 import com.finance.application.dto.SlipCreateResponseDto;
-import com.finance.application.dto.SlipResponseDto;
+import com.finance.application.dto.SlipSingleResponseDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
-import java.security.PrivateKey;
 
 @RestController
 @RequiredArgsConstructor
@@ -23,4 +18,11 @@ public class SlipController {
     public SlipCreateResponseDto create(@RequestBody SlipCreateRequestDto slipCreateRequestDto){
         return slipService.create(slipCreateRequestDto);
     }
+
+    @GetMapping("/api/v0/slips/{id}")
+    public SlipSingleResponseDto findSlipById(@PathVariable String id) {
+        return slipService.findSlipById(id);
+    }
+
+
 }

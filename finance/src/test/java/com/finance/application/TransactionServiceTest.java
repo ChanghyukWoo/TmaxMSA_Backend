@@ -42,6 +42,7 @@ public class TransactionServiceTest {
 
         //when
         TxResponseDto txById = transactionService.findTxById(id);
+        System.out.println("txById = " + txById);
 
         //then
         assertEquals(txById, this.response);

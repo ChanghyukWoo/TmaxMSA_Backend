@@ -65,6 +65,11 @@ public class Transactions {
         return new Transactions(txBriefs, txDate, txAmount);
     }
 
+    public static Transactions of(String id, String txBriefs, LocalDateTime txDate, int txAmount)
+    {
+        return new Transactions(id, txBriefs, txDate, txAmount);
+    }
+
     public static Transactions from(TxResponseDto txResponseDto) {
         return new Transactions(
                 txResponseDto.getTxId(),

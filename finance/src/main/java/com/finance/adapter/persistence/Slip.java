@@ -22,9 +22,11 @@ public class Slip {
     @Column(name = "id", nullable = false, unique = true)
     private String id;
 
+    @Enumerated
     @Column(name = "slip_account", nullable = false)
     private Account account;
 
+    @Enumerated
     @Column(name = "slip_dctype", nullable = false)
     private DCType dcType;
 

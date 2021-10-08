@@ -16,4 +16,11 @@ public class SlipRequestDto {
     private DCType dcType;
     private int amount;
     private String slipBriefs;
+
+    public SlipRequestDto(Account account, DCType dcType, int amount, String slipBriefs) {
+        this.account = account;
+        this.dcType = dcType;
+        this.amount = amount;
+        this.slipBriefs = slipBriefs;
+    }
 }

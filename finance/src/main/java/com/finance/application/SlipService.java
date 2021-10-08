@@ -1,11 +1,9 @@
 package com.finance.application;
 
-import com.finance.application.dto.SlipCreateRequestDto;
-import com.finance.application.dto.SlipCreateResponseDto;
-import com.finance.application.dto.SlipResponseDto;
-import com.finance.application.dto.TxResponseDto;
+import com.finance.application.dto.*;
 import com.finance.application.spi.SlipPort;
 import com.finance.application.spi.TransactionsPort;
+import com.finance.domain.exceptions.BadRequestException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,8 +25,14 @@ public class SlipService {
 
         Optional<TxResponseDto> TxResponseDto = this.transactionsPort.findById(SlipCreateRequestDto.getTx_id());
 
-
         return slipPort.create(SlipCreateRequestDto, TxResponseDto);
+    }
+
+    public SlipSingleResponseDto findSlipById(String id) {
+        return this.slipPort.findById(id).orElseThrow(
+                () -> new BadRequestException("Invalid Slip Id")
+        );
+
     }
 
 }
