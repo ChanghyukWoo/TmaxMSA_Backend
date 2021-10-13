@@ -34,7 +34,7 @@ public class SlipService {
             return slipPort.create(SlipCreateRequestDto, TxResponseDto);
         }
         else {
-            throw new com.finance.domain.exceptions.BadRequestException("Invalid");
+            throw new com.finance.domain.exceptions.BadRequestException("Invalid Credit Debit Matching");
         }
     }
 
