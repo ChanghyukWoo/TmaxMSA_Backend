@@ -34,8 +34,14 @@ public class SlipPortImpl implements SlipPort{
 
     @Override
     public Optional<SlipSingleResponseDto> findById(String id) {
-
-
         return this.slipRepository.findById(id).map(SlipSingleResponseDto::from);
+    }
+
+    @Override
+    public List<SlipSingleResponseDto> findByTxId(Optional<TxResponseDto> txResponseDto) {
+
+        Transactions transactions = txResponseDto.map(Transactions::from).orElse(null);
+
+        return this.slipRepository.findByTransactions(transactions).stream().map(SlipSingleResponseDto::from).collect(Collectors.toList());
     }
 }
