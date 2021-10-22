@@ -1,12 +1,15 @@
 package com.finance.application;
 
 import com.finance.application.dto.TxCreateRequestDto;
+import com.finance.application.dto.TxListResponseDto;
 import com.finance.application.dto.TxResponseDto;
 import com.finance.application.spi.TransactionsPort;
 import com.finance.domain.exceptions.BadRequestException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 
 @Service
@@ -19,17 +22,15 @@ public class TransactionService {
     @Transactional
     public TxResponseDto create(TxCreateRequestDto request){
 
-        return transactionsPort.create(request);
+        return this.transactionsPort.create(request);
 
     }
 
-    /*
-     * TODO: findAll 서비스 구현
-     */
-/*
+
     public List<TxListResponseDto> findAllTx(){
+        return this.transactionsPort.findAll();
     }
-*/
+
 
     public TxResponseDto findTxById(String id){
         return this.transactionsPort.findById(id).orElseThrow(

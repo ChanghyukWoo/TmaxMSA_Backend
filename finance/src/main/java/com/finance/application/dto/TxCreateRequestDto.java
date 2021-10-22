@@ -11,5 +11,4 @@ public class TxCreateRequestDto {
 
     private String txBriefs;
     private int txAmount;
-
 }
